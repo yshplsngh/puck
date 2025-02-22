@@ -1,0 +1,65 @@
+.Form {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 32px;
+    color: var(--puck-color-black);
+}
+
+.Form h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.Form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.Form-group label {
+    font-size: var(--puck-font-size-l);
+    margin-bottom: 8px;
+}
+
+.Form-group input,
+.Form-group textarea {
+    padding: 12px;
+    width: 20rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: var(--puck-font-size-m);
+}
+
+.Form-radio-group input {
+    width: 1rem;
+}
+
+.Form-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.Form-radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.Form-submit {
+    margin-top: 24px;
+    padding: 12px 24px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: var(--puck-font-size-m);
+}
+
+.Form-submit:hover {
+    background-color: black;
+}

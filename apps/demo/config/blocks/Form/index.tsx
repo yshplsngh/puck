@@ -1,11 +1,15 @@
 import { ComponentConfig } from "@/core";
 import React from "react";
+import styles from "./styles.module.css";
+import { getClassNameFactory } from "@/core/lib";
+
+const getClassName = getClassNameFactory("Form", styles);
 
 export type FormProps = {
     title: string;
     inputFields: {
         label: string;
-        type: "text" | "email" | "number" | "radio" | "checkbox" | "textarea";
+        type: "text" | "email" | "number" | "radio" | "textarea";
         options?: {
             optionText: string;
         }[];
@@ -31,7 +35,6 @@ export const Form: ComponentConfig<FormProps> = {
                         { label: "Email", value: "email" },
                         { label: "Number", value: "number" },
                         { label: "Radio", value: "radio" },
-                        { label: "Checkbox", value: "checkbox" },
                         { label: "Textarea", value: "textarea" }
                     ]
                 },
@@ -57,11 +60,11 @@ export const Form: ComponentConfig<FormProps> = {
     },
     render: ({ title, inputFields }) => {
         return (
-            <div>
+            <div className={getClassName()}>
                 <form>
                     <h2>{title}</h2>
                     {inputFields.map((field, index) => (
-                        <div key={index}>
+                        <div className={getClassName("group")} key={index}>
                             <label htmlFor={`${index}-${field.label}`}>{field.label}</label>
 
                             {field.type === "textarea" ? (
@@ -70,9 +73,9 @@ export const Form: ComponentConfig<FormProps> = {
                                     name={`${index}-${field.label}`}
                                 />
                             ) : field.type === "radio" ? (
-                                <div>
+                                <div className={getClassName("radio-group")}>
                                     {field.options?.map((option, optionIndex) => (
-                                        <div className="radio-option" key={optionIndex}>
+                                        <div className={getClassName("radio-option")} key={optionIndex}>
                                             <input
                                                 type="radio"
                                                 id={`${optionIndex}-${field.label}-${option.optionText}`}
@@ -96,14 +99,7 @@ export const Form: ComponentConfig<FormProps> = {
                         </div>
                     ))}
                     {inputFields.length > 0 && (
-                        <button type="submit" style={{
-                            padding: "10px 20px",
-                            backgroundColor: "#007bff",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "4px",
-                            cursor: "pointer"
-                        }}>
+                        <button type="submit" className={getClassName("submit")}>
                             Submit
                         </button>
                     )}
