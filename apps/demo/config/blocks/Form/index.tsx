@@ -5,7 +5,10 @@ export type FormProps = {
     title: string;
     inputFields: {
         label: string;
-        type: "text" | "email" | "number" | "radio" | "checkbox" | "select" | "textarea";
+        type: "text" | "email" | "number" | "radio" | "checkbox" | "textarea";
+        options?: {
+            optionText: string;
+        }[];
     }[];
 };
 
@@ -29,16 +32,23 @@ export const Form: ComponentConfig<FormProps> = {
                         { label: "Number", value: "number" },
                         { label: "Radio", value: "radio" },
                         { label: "Checkbox", value: "checkbox" },
-                        { label: "Select", value: "select" },
                         { label: "Textarea", value: "textarea" }
                     ]
+                },
+                options: {
+                    type: "array",
+                    arrayFields: {
+                        optionText: { type: "text" }
+                    },
+                    defaultItemProps: {
+                        optionText: "New Option",
+                    }
                 }
             },
             defaultItemProps: {
                 label: "New Field",
-                type: "text"
+                type: "text",
             }
-
         }
     },
     defaultProps: {
@@ -59,6 +69,23 @@ export const Form: ComponentConfig<FormProps> = {
                                     id={`${index}-${field.label}`}
                                     name={`${index}-${field.label}`}
                                 />
+                            ) : field.type === "radio" ? (
+                                <div>
+                                    {field.options?.map((option, optionIndex) => (
+                                        <div className="radio-option" key={optionIndex}>
+                                            <input
+                                                type="radio"
+                                                id={`${optionIndex}-${field.label}-${option.optionText}`}
+                                                name={`${index}-${field.label}`}
+                                                value={option.optionText}
+                                            />
+                                            <label htmlFor={`${optionIndex}-${field.label}-${option.optionText}`}>
+                                                {option.optionText}
+                                            </label>
+                                        </div>
+
+                                    ))}
+                                </div>
                             ) : (
                                 <input
                                     type={field.type}
@@ -68,6 +95,18 @@ export const Form: ComponentConfig<FormProps> = {
                             )}
                         </div>
                     ))}
+                    {inputFields.length > 0 && (
+                        <button type="submit" style={{
+                            padding: "10px 20px",
+                            backgroundColor: "#007bff",
+                            color: "white",
+                            border: "none",
+                            borderRadius: "4px",
+                            cursor: "pointer"
+                        }}>
+                            Submit
+                        </button>
+                    )}
                 </form>
             </div>
         )
