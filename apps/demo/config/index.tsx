@@ -35,7 +35,7 @@ export type UserConfig = Config<
   "layout" | "typography" | "interactive"
 >;
 
-console.log(Form)
+// console.log(Form)
 export type UserData = Data<Props, RootProps>;
 
 // We avoid the name config as next gets confused
