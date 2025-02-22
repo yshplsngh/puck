@@ -9,6 +9,7 @@ import { Logos, LogosProps } from "./blocks/Logos";
 import { Stats, StatsProps } from "./blocks/Stats";
 import { Text, TextProps } from "./blocks/Text";
 import { Space, SpaceProps } from "./blocks/Space";
+import { Form, FormProps } from "./blocks/Form";
 
 import Root, { RootProps } from "./root";
 
@@ -25,6 +26,7 @@ export type Props = {
   Stats: StatsProps;
   Text: TextProps;
   Space: SpaceProps;
+  Form: FormProps;
 };
 
 export type UserConfig = Config<
@@ -52,7 +54,8 @@ export const conf: UserConfig = {
     },
     interactive: {
       title: "Actions",
-      components: ["Button"],
+      // components: ["Button"],
+      components: ["Button", "Form"],
     },
     other: {
       title: "Other",
@@ -70,6 +73,7 @@ export const conf: UserConfig = {
     Stats,
     Text,
     Space,
+    Form,
   },
 };
 

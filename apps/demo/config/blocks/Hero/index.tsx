@@ -11,6 +11,7 @@ import { Link2 } from "lucide-react";
 
 const getClassName = getClassNameFactory("Hero", styles);
 
+// check
 export type HeroProps = {
   quote?: { index: number; label: string };
   title: string;
@@ -96,6 +97,7 @@ export const Hero: ComponentConfig<HeroProps> = {
     },
     title: { type: "text" },
     description: { type: "textarea" },
+    // check
     buttons: {
       type: "array",
       min: 1,
@@ -112,6 +114,7 @@ export const Hero: ComponentConfig<HeroProps> = {
           ],
         },
       },
+      // check
       defaultItemProps: {
         label: "Button",
         href: "#",
@@ -155,6 +158,7 @@ export const Hero: ComponentConfig<HeroProps> = {
     },
     padding: { type: "text" },
   },
+  // check
   defaultProps: {
     title: "Hero",
     align: "left",

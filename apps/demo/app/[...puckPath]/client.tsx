@@ -23,6 +23,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
 
   const params = new URL(window.location.href).searchParams;
 
+  console.log("config", config);
   if (isEdit) {
     return (
       <div>
